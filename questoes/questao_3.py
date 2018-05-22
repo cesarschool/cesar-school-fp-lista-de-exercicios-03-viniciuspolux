@@ -37,9 +37,40 @@
 # Para a correta execução do programa, a estrutura atual deve ser mantida,
 # substituindo apenas o comando print(questão...) existente.
 ##
-def main():
-    print("questao 3")
 
+loc1 = 0
+loc2 = 0
+loc3 = 0
+loc4 = 0
+
+def main():
+
+    def robot(x):
+        global loc1
+        global loc2
+        global loc3
+        global loc4
+        x = x.split()
+        if x[0] == 'CIMA':
+            loc1 += int(x[1])
+        if x[0] == 'BAIXO':
+            loc2 += int(x[1])
+        if x[0] == 'ESQUERDA':
+            loc3 += int(x[1])
+        if x[0] == 'DIREITA':
+            loc4 += int(x[1])
+
+    while True:
+        x = input('Tuplas: ').upper()
+        if x == '':
+            break
+        else:
+            robot(x)
+            continue
+
+    locF = ((loc1 - loc2) ** 2 + (loc3 - loc4) ** 2) ** (1 / 2)
+    locF = round(locF)
+    print('Distancia percorrida: ', locF)
 
     
 if __name__ == '__main__':

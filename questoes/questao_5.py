@@ -44,10 +44,74 @@
 # Para a correta execução do programa, a estrutura atual deve ser mantida,
 # substituindo apenas o comando print(questão...) existente.
 ##
+LETRASTOTAL = 26
+
+
 def main():
-    print("questao 5")
+    LETRAS_TOTAL = 26
+
+    def msgcript(message, key):
+        translated = ''
+
+        for symbol in message:
+
+            if symbol.isalpha():
+
+                num = ord(symbol)
+
+                num += key
+
+                if symbol.isupper():
+
+                    if num > ord('Z'):
+
+                        num -= 26
+
+                    elif num < ord('A'):
+
+                        num += 26
+
+                elif symbol.islower():
+
+                    if num > ord('z'):
+
+                        num -= 26
+
+                    elif num < ord('a'):
+
+                        num += 26
+
+                translated += chr(num)
+
+            else:
+
+                translated += symbol
+
+        return translated
+
+    flag = 0
+    chavein = input('Digite a chave + mensagem a ser criptografada: ')
+    rot = chavein.split(' ', 1)
+    keys = rot[0].split('ROT', 1)
+    if keys[0] != '':
+        print('Erro')
+
+    else:
+        key0 = keys[1]
+        ms = rot[1]
+        for i in rot[1]:
+            if i.isnumeric() == True:
+                flag = 1
+            else:
+                continue
+        if (key0.isnumeric() == False) or (int(key0) < 0 or int(key0) > LETRAS_TOTAL) or (flag == 1):
+            print('Erro')
 
 
-    
+        else:
+            key = int(key0)
+            print(msgcript(ms, key))
+
+
 if __name__ == '__main__':
     main()

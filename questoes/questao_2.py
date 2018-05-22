@@ -27,7 +27,17 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 2")
+	lista = []
+	contwords = input('Digite uma frase: ')
+	contwords = contwords.split()
+
+	for i in contwords:
+	    lista.append("{}:{}".format(i, contwords.count(i)))
+	lista = list(set(lista))
+	lista = sorted(lista)
+	for i in lista:
+		print(i)
+
 
 
 

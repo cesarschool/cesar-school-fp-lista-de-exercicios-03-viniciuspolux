@@ -28,8 +28,55 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 1")
-    
+
+    senha = input('Digite as senhas: ')
+    senha = senha.split(',')
+    senhalist = []
+
+    def alpha(senha):
+        for x in senha:
+            if x.isalpha() == True:
+                return True
+
+    def especial(senha):
+        char1 = '@'
+        char2 = '#'
+        char3 = '$'
+        for x in senha:
+            if x == char1 or x == char2 or x == char3:
+                return True
+
+    def maiusculo(senha):
+        for x in senha:
+            if x.isupper() == True:
+                return True
+
+    def minusculo(senha):
+        for x in senha:
+            if x.islower() == True:
+                return True
+
+    def numero(senha):
+        for x in senha:
+            if x.isnumeric() == True:
+                return True
+
+    def tamanho(senha):
+        lenx = len(senha)
+        if lenx >= 6 and lenx <= 12:
+            return True
+
+    def all(senha):
+        if alpha(senha) and numero(senha) and especial(senha) and maiusculo(senha) and minusculo(senha) and tamanho(
+                senha):
+            return True
+
+    for palavra in senha:
+        if all(palavra) == True:
+            senhalist.append(palavra)
+        else:
+            continue
+    print(','.join(senhalist))
 
 
 if __name__ == '__main__':

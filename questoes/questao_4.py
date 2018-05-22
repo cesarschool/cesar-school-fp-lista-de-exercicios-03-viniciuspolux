@@ -34,9 +34,14 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 4")
+    listatuplas = []
+    user_input = input('Digite as tuplas: ').split(',')
+    while(user_input != ['']):
+        listatuplas.append(tuple(user_input))
+        user_input = input('Digite as tuplas: ').split(',')
+    listatuplas.sort()
+    print(listatuplas)
 
 
-    
 if __name__ == '__main__':
     main()
